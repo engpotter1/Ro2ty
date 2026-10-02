@@ -1273,51 +1273,99 @@
             --accent-glow: rgba(240, 208, 96, 0.1);
         }
 
-        /* ==================== RESPONSIVE ==================== */
+      /* ==================== RESPONSIVE (تعديلات الموبايل) ==================== */
         @media (max-width: 768px) {
             .section {
                 padding: 60px 15px;
             }
 
+            /* تعديلات قسم الذكريات */
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* عرض كارتين جنب بعض */
+                gap: 15px;
+                padding: 10px 5px;
+            }
+            .memory-card {
+                padding: 8px 8px 15px 8px; /* تصغير حواف الكارت للموبايل */
+            }
+            .memory-media {
+                height: 140px; /* تقصير طول الصورة عشان تناسب الشاشة */
+            }
+            .memory-note {
+                font-size: 1rem;
+                margin-top: 10px;
+            }
+            .upload-btn {
+                padding: 12px 25px;
+                font-size: 1.05rem;
+            }
+
+            /* تعديلات قسم الورود الحقيقية */
+            .flower-choices {
                 gap: 12px;
+                margin-top: 20px;
+            }
+            .flower-choice {
+                width: 105px;
+                height: 135px;
                 padding: 10px;
             }
-
-            .garden-container {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
+            .real-flower-img {
+                width: 65px;
+                height: 65px;
+                margin-bottom: 10px;
+            }
+            .flower-choice-label {
+                font-size: 0.85rem;
+            }
+            .flower-response {
+                margin-top: 25px;
+                padding: 15px;
+            }
+            .flower-response p {
+                font-size: 1.1rem;
             }
 
-            .flower-choices {
-                gap: 15px;
-            }
-
-            .flower-choice {
-                width: 85px;
-                height: 105px;
-            }
-
+            /* تعديلات عامة */
             .envelope-container {
                 width: 250px;
                 height: 175px;
             }
-
             .words-grid {
                 gap: 10px;
             }
-
             .word-card {
-                padding: 12px 22px;
-                font-size: 1.15rem;
+                padding: 12px 20px;
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .music-btn, .mood-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                bottom: 15px;
+            }
+            .mood-menu {
+                bottom: 55px;
             }
         }
 
+        /* للشاشات الصغيرة جداً */
         @media (max-width: 380px) {
-            .garden-container {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
+            .gallery-grid {
+                grid-template-columns: 1fr; /* عرض كارت واحد كبير لو الشاشة صغيرة جداً */
+            }
+            .memory-media {
+                height: 200px;
+            }
+            .flower-choice {
+                width: 95px;
+                height: 125px;
+            }
+            .real-flower-img {
+                width: 55px;
+                height: 55px;
             }
         }
 
