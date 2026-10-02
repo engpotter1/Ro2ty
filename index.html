@@ -1732,10 +1732,9 @@
 
 <!-- ==================== AUDIO ==================== -->
 <audio id="bg-music" loop preload="auto">
-    <!-- حط اسم ملف الأغنية هنا -->
     <source src="music.mp3" type="audio/mpeg">
 </audio>
-
+    
 <script>
 // ==================== GLOBAL STATE ====================
 let websiteEntered = false;
@@ -2623,59 +2622,22 @@ function toggleMusic() {
         btn.textContent = '🎵 تشغيل الموسيقى';
         musicPlaying = false;
     } else {
-        try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (!window.musicContext) {
-                window.musicContext = new AudioContext();
-                playAmbientMusic(window.musicContext);
-            } else {
-                window.musicContext.resume();
-            }
-        } catch(e) {
-            console.log('Audio not supported');
+        // تشغيل الأغنية المرفوعة
+        let playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                // التشغيل نجح
+                btn.textContent = '🎵 إيقاف الموسيقى';
+                musicPlaying = true;
+            })
+            .catch(error => {
+                // المتصفح منع التشغيل التلقائي
+                console.log("Audio play failed:", error);
+                alert("اضغطي على أي مكان في الشاشة الأول عشان المتصفح يسمح بتشغيل الأغنية ❤️");
+            });
         }
-        btn.textContent = '🎵 إيقاف الموسيقى';
-        musicPlaying = true;
     }
-}
-
-function playAmbientMusic(ctx) {
-    function createNote(freq, startTime, duration, volume) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, startTime);
-
-        gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(volume, startTime + 0.5);
-        gain.gain.linearRampToValueAtTime(volume * 0.7, startTime + duration - 0.5);
-        gain.gain.linearRampToValueAtTime(0, startTime + duration);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.start(startTime);
-        osc.stop(startTime + duration);
-    }
-
-    const notes = [261.63, 329.63, 392.00, 349.23, 293.66, 329.63, 261.63, 392.00];
-    const now = ctx.currentTime;
-    let time = now;
-
-    function playLoop() {
-        if (!musicPlaying) return;
-        const currentTime = ctx.currentTime;
-
-        notes.forEach((note, i) => {
-            createNote(note, currentTime + i * 2, 2.5, 0.05);
-            createNote(note * 0.5, currentTime + i * 2, 3, 0.03);
-        });
-
-        setTimeout(playLoop, notes.length * 2000);
-    }
-
-    playLoop();
 }
 
 // ==================== MOOD ====================
