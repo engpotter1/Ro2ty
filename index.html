@@ -476,241 +476,240 @@
         }
         
         /* ==================== MEMORY GALLERY ==================== */
-       /* ==================== MEMORY GALLERY ==================== */
-#memories {
-    background: radial-gradient(ellipse at top right, rgba(26, 10, 46, 0.5) 0%, var(--deep-black) 70%);
-}
+        #memories {
+            background: radial-gradient(ellipse at top right, rgba(26, 10, 46, 0.5) 0%, var(--deep-black) 70%);
+        }
 
-.upload-container {
-    margin: 20px auto 40px;
-    text-align: center;
-}
+        .upload-container {
+            margin: 20px auto 40px;
+            text-align: center;
+        }
 
-.upload-btn {
-    background: linear-gradient(135deg, rgba(212, 168, 70, 0.15), rgba(244, 160, 192, 0.15));
-    border: 2px dashed rgba(212, 168, 70, 0.5);
-    color: var(--warm-gold);
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 600;
-    border-radius: 20px;
-    cursor: pointer;
-    display: inline-block;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-}
+        .upload-btn {
+            background: linear-gradient(135deg, rgba(212, 168, 70, 0.15), rgba(244, 160, 192, 0.15));
+            border: 2px dashed rgba(212, 168, 70, 0.5);
+            color: var(--warm-gold);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
 
-.upload-btn:hover {
-    background: linear-gradient(135deg, rgba(212, 168, 70, 0.3), rgba(244, 160, 192, 0.3));
-    border-color: var(--warm-gold);
-    box-shadow: 0 0 25px rgba(212, 168, 70, 0.3);
-    transform: translateY(-3px);
-}
+        .upload-btn:hover {
+            background: linear-gradient(135deg, rgba(212, 168, 70, 0.3), rgba(244, 160, 192, 0.3));
+            border-color: var(--warm-gold);
+            box-shadow: 0 0 25px rgba(212, 168, 70, 0.3);
+            transform: translateY(-3px);
+        }
 
-.upload-icon {
-    font-size: 1.5rem;
-    margin-left: 10px;
-    vertical-align: middle;
-}
+        .upload-icon {
+            font-size: 1.5rem;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
-    width: 100%;
-    padding: 20px;
-}
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+            padding: 20px;
+        }
 
-/* شكل الكارت (Polaroid) */
-.memory-card {
-    background: #fdfbf7;
-    padding: 12px 12px 25px 12px;
-    border-radius: 5px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    transform: rotate(calc(var(--rot) * 1deg));
-}
+        /* شكل الكارت (Polaroid) */
+        .memory-card {
+            background: #fdfbf7;
+            padding: 12px 12px 25px 12px;
+            border-radius: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            transform: rotate(calc(var(--rot) * 1deg));
+        }
 
-.memory-card:hover {
-    transform: scale(1.05) rotate(0deg);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(212, 168, 70, 0.2);
-    z-index: 2;
-}
+        .memory-card:hover {
+            transform: scale(1.05) rotate(0deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(212, 168, 70, 0.2);
+            z-index: 2;
+        }
 
-.memory-media {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 3px;
-    background: #eee;
-}
+        .memory-media {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 3px;
+            background: #eee;
+        }
 
-.memory-note {
-    font-family: 'Aref Ruqaa', serif;
-    color: #3a2a1a;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 1.2rem;
-    line-height: 1.5;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
+        .memory-note {
+            font-family: 'Aref Ruqaa', serif;
+            color: #3a2a1a;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
 
-.delete-memory {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    background: var(--deep-rose);
-    color: white;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    font-size: 1rem;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-}
+        .delete-memory {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background: var(--deep-rose);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
 
-.memory-card:hover .delete-memory {
-    opacity: 1;
-}
+        .memory-card:hover .delete-memory {
+            opacity: 1;
+        }
 
-/* نوافذ العرض */
-.note-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: linear-gradient(135deg, rgba(26, 10, 46, 0.98), rgba(5, 2, 8, 0.98));
-    border: 1px solid rgba(212, 168, 70, 0.3);
-    border-radius: 20px;
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    z-index: 8000;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(20px);
-    text-align: center;
-}
+        /* نوافذ العرض */
+        .note-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.98), rgba(5, 2, 8, 0.98));
+            border: 1px solid rgba(212, 168, 70, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 8000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
 
-.note-modal.active {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: all;
-}
+        .note-modal.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
+        }
 
-#memory-note-input {
-    width: 100%;
-    height: 100px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(212, 168, 70, 0.2);
-    border-radius: 10px;
-    color: var(--creamy-white);
-    padding: 15px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 1rem;
-    resize: none;
-    margin-bottom: 20px;
-    direction: rtl;
-}
+        #memory-note-input {
+            width: 100%;
+            height: 100px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 168, 70, 0.2);
+            border-radius: 10px;
+            color: var(--creamy-white);
+            padding: 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 20px;
+            direction: rtl;
+        }
 
-#memory-note-input:focus {
-    outline: none;
-    border-color: var(--warm-gold);
-}
+        #memory-note-input:focus {
+            outline: none;
+            border-color: var(--warm-gold);
+        }
 
-.note-modal-btns {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
+        .note-modal-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
 
-.save-note-btn, .cancel-note-btn {
-    border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        .save-note-btn, .cancel-note-btn {
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.save-note-btn {
-    background: linear-gradient(135deg, var(--warm-gold), #c4943a);
-    color: var(--deep-black);
-}
+        .save-note-btn {
+            background: linear-gradient(135deg, var(--warm-gold), #c4943a);
+            color: var(--deep-black);
+        }
 
-.cancel-note-btn {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--creamy-white);
-}
+        .cancel-note-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--creamy-white);
+        }
 
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.95);
-    z-index: 9500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
 
-.lightbox.active {
-    opacity: 1;
-    pointer-events: all;
-}
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
 
-#lightbox-media-container {
-    max-width: 90%;
-    max-height: 70vh;
-}
+        #lightbox-media-container {
+            max-width: 90%;
+            max-height: 70vh;
+        }
 
-#lightbox-media-container img, #lightbox-media-container video {
-    max-width: 100%;
-    max-height: 70vh;
-    border-radius: 10px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
+        #lightbox-media-container img, #lightbox-media-container video {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
 
-.lightbox-caption {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: var(--soft-pink);
-    text-align: center;
-    padding: 0 20px;
-    font-family: 'Aref Ruqaa', serif;
-}
+        .lightbox-caption {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: var(--soft-pink);
+            text-align: center;
+            padding: 0 20px;
+            font-family: 'Aref Ruqaa', serif;
+        }
 
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    color: var(--creamy-white);
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 2;
-}
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: var(--creamy-white);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2;
+        }
 
         /* ==================== CHOOSE FLOWER ==================== */
         #choose-flower {
@@ -748,10 +747,21 @@
             box-shadow: 0 0 25px rgba(212, 168, 70, 0.15);
         }
 
-        .flower-choice svg {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 8px;
+        .real-flower-img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 2px solid rgba(212, 168, 70, 0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .flower-choice:hover .real-flower-img {
+            border-color: var(--warm-gold);
+            box-shadow: 0 8px 25px rgba(212, 168, 70, 0.4);
+            transform: scale(1.1);
         }
 
         .flower-choice-label {
@@ -910,73 +920,6 @@
             font-family: 'Tajawal', sans-serif;
             font-weight: 600;
             cursor: pointer;
-        }
-
-        /* ==================== SAD SECTION ==================== */
-        #when-sad {
-            background: radial-gradient(ellipse at center, rgba(20, 8, 35, 0.8) 0%, var(--deep-black) 70%);
-        }
-
-        .sad-flower {
-            width: 100px;
-            height: 100px;
-            margin: 20px auto;
-            transition: all 1s ease;
-        }
-
-        .sad-flower.bloomed {
-            filter: drop-shadow(0 0 20px rgba(244, 160, 192, 0.6)) brightness(1.3);
-            transform: scale(1.2);
-        }
-
-        .hug-btn {
-            background: linear-gradient(135deg, rgba(244, 160, 192, 0.2), rgba(196, 166, 232, 0.1));
-            border: 1px solid rgba(244, 160, 192, 0.3);
-            color: var(--soft-pink);
-            padding: 16px 45px;
-            font-size: 1.2rem;
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 25px;
-            transition: all 0.4s ease;
-        }
-
-        .hug-btn:hover, .hug-btn:active {
-            background: linear-gradient(135deg, rgba(244, 160, 192, 0.35), rgba(196, 166, 232, 0.2));
-            box-shadow: 0 0 35px rgba(244, 160, 192, 0.3);
-            transform: scale(1.05);
-        }
-
-        .hug-response {
-            margin-top: 25px;
-            font-size: 1.2rem;
-            color: var(--soft-pink);
-            opacity: 0;
-            transition: all 0.8s ease;
-            line-height: 2;
-        }
-
-        .hug-response.visible {
-            opacity: 1;
-        }
-
-        /* Warm overlay for sad section */
-        .warm-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, rgba(244, 160, 192, 0.08), transparent);
-            opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-        }
-
-        .warm-overlay.active {
-            opacity: 1;
         }
 
         /* ==================== MISS YOU SECTION ==================== */
@@ -1485,20 +1428,6 @@
             background: rgba(212, 168, 70, 0.5);
         }
 
-        /* Placeholder images using gradients */
-        .placeholder-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .placeholder-1 { background: linear-gradient(135deg, #e8789a, #c4a6e8); }
-        .placeholder-2 { background: linear-gradient(135deg, #d4a846, #e8789a); }
-        .placeholder-3 { background: linear-gradient(135deg, #c4a6e8, #f4a0c0); }
-        .placeholder-4 { background: linear-gradient(135deg, #f4a0c0, #d4a846); }
-        .placeholder-5 { background: linear-gradient(135deg, #d4267e, #c4a6e8); }
-        .placeholder-6 { background: linear-gradient(135deg, #e8789a, #d4a846); }
-
         .section-divider {
             width: 60px;
             height: 2px;
@@ -1645,79 +1574,60 @@
         <div class="word-message" id="word-message"></div>
     </section>
 
-
    <!-- ==================== MEMORIES ==================== -->
-<section id="memories" class="section">
-    <h2 class="section-title reveal">ذكرياتنا 📸</h2>
-    <div class="section-divider reveal"></div>
-    <p class="section-text reveal" style="margin-bottom: 25px;">المساحة دي بتاعتك.. ضيفي فيها أي صورة أو فيديو بتحبيه واكتبي حكايته عشان يفضل هنا.</p>
+    <section id="memories" class="section">
+        <h2 class="section-title reveal">ذكرياتنا 📸</h2>
+        <div class="section-divider reveal"></div>
+        <p class="section-text reveal" style="margin-bottom: 25px;">المساحة دي بتاعتك.. ضيفي فيها أي صورة أو فيديو بتحبيه واكتبي حكايته عشان يفضل هنا.</p>
 
-    <div class="upload-container reveal">
-        <label for="memory-upload" class="upload-btn">
-            <span class="upload-icon">📸</span> ضيفي ذكرى جديدة
-        </label>
-        <input type="file" id="memory-upload" accept="image/*,video/*" style="display: none;" onchange="handleMemorySelect(event)">
-    </div>
+        <div class="upload-container reveal">
+            <label for="memory-upload" class="upload-btn">
+                <span class="upload-icon">📸</span> ضيفي ذكرى جديدة
+            </label>
+            <input type="file" id="memory-upload" accept="image/*,video/*" style="display: none;" onchange="handleMemorySelect(event)">
+        </div>
 
-    <div class="gallery-grid reveal" id="gallery-grid"></div>
-</section>
-
-<!-- ==================== NOTE MODAL (نافذة كتابة الملاحظة) ==================== -->
-<div class="popup-overlay" id="note-overlay" onclick="cancelMemory()"></div>
-<div class="note-modal" id="note-modal">
-    <h3 style="color: var(--warm-gold); margin-bottom: 15px; font-family: 'Aref Ruqaa', serif;">اكتبي حكاية الذكرى 📝</h3>
-    <textarea id="memory-note-input" placeholder="الصورة دي بتفكرك بإيه؟..."></textarea>
-    <div class="note-modal-btns">
-        <button class="save-note-btn" onclick="saveNewMemory()">حفظ الذكرى ❤️</button>
-        <button class="cancel-note-btn" onclick="cancelMemory()">إلغاء</button>
-    </div>
-</div>
-
-<!-- ==================== LIGHTBOX (نافذة عرض الصورة/الفيديو) ==================== -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
-    <div id="lightbox-media-container"></div>
-    <p class="lightbox-caption" id="lightbox-caption"></p>
-</div>
+        <div class="gallery-grid reveal" id="gallery-grid"></div>
+    </section>
 
     <!-- ==================== CHOOSE FLOWER ==================== -->
-<!-- ==================== CHOOSE FLOWER ==================== -->
-<section id="choose-flower" class="section">
-    <h2 class="section-title reveal">اختاري وردة... 🌷</h2>
-    <div class="section-divider reveal"></div>
-    <p class="section-text reveal" style="margin-bottom: 20px;">كل وردة من دول بتعبر عن حاجة بشوفها فيكي، اختاري وردة وشوفي قلبي بيقولك إيه.</p>
+    <section id="choose-flower" class="section">
+        <h2 class="section-title reveal">اختاري وردة... 🌷</h2>
+        <div class="section-divider reveal"></div>
+        <p class="section-text reveal" style="margin-bottom: 20px;">كل وردة من دول بتعبر عن حاجة بشوفها فيكي، اختاري وردة وشوفي قلبي بيقولك إيه.</p>
 
-    <div class="flower-choices reveal">
-        <div class="flower-choice" onclick="chooseFlower('red')">
-            <img src="https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=200&q=80" alt="وردة حمراء" class="real-flower-img">
-            <span class="flower-choice-label">وردة حمراء</span>
+        <div class="flower-choices reveal">
+            <div class="flower-choice" onclick="chooseFlower('red')">
+                <img src="https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=200&q=80" alt="وردة حمراء" class="real-flower-img">
+                <span class="flower-choice-label">وردة حمراء</span>
+            </div>
+
+            <div class="flower-choice" onclick="chooseFlower('pink')">
+                <img src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=200&q=80" alt="وردة وردية" class="real-flower-img">
+                <span class="flower-choice-label">وردة وردي</span>
+            </div>
+
+            <div class="flower-choice" onclick="chooseFlower('white')">
+                <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=200&q=80" alt="وردة بيضاء" class="real-flower-img">
+                <span class="flower-choice-label">وردة بيضا</span>
+            </div>
+
+            <div class="flower-choice" onclick="chooseFlower('purple')">
+                <img src="https://images.unsplash.com/photo-1565011523534-747a8601f10a?auto=format&fit=crop&w=200&q=80" alt="زهرة بنفسجي" class="real-flower-img">
+                <span class="flower-choice-label">وردة بنفسجي</span>
+            </div>
+
+            <div class="flower-choice" onclick="chooseFlower('tulip')">
+                <img src="https://images.unsplash.com/photo-1520764836495-20703c39df4a?auto=format&fit=crop&w=200&q=80" alt="توليب" class="real-flower-img">
+                <span class="flower-choice-label">توليب</span>
+            </div>
         </div>
 
-        <div class="flower-choice" onclick="chooseFlower('pink')">
-            <img src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=200&q=80" alt="وردة وردية" class="real-flower-img">
-            <span class="flower-choice-label">وردة وردي</span>
+        <div class="flower-response" id="flower-response">
+            <p id="flower-response-text"></p>
         </div>
+    </section>
 
-        <div class="flower-choice" onclick="chooseFlower('white')">
-            <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=200&q=80" alt="وردة بيضاء" class="real-flower-img">
-            <span class="flower-choice-label">وردة بيضا</span>
-        </div>
-
-        <div class="flower-choice" onclick="chooseFlower('purple')">
-            <img src="https://images.unsplash.com/photo-1565011523534-747a8601f10a?auto=format&fit=crop&w=200&q=80" alt="زهرة بنفسجي" class="real-flower-img">
-            <span class="flower-choice-label">وردة بنفسجي</span>
-        </div>
-
-        <div class="flower-choice" onclick="chooseFlower('tulip')">
-            <img src="https://images.unsplash.com/photo-1520764836495-20703c39df4a?auto=format&fit=crop&w=200&q=80" alt="توليب" class="real-flower-img">
-            <span class="flower-choice-label">توليب</span>
-        </div>
-    </div>
-
-    <div class="flower-response" id="flower-response">
-        <p id="flower-response-text"></p>
-    </div>
-</section>
     <!-- ==================== LOVE LETTER ==================== -->
     <section id="love-letter" class="section">
         <h2 class="section-title reveal">عندي حاجة عايز أقولهالك...</h2>
@@ -1736,13 +1646,6 @@
 
         <p class="reveal" style="color: var(--lavender); font-size: 0.95rem; margin-top: 15px; opacity: 0.7;">اضغطي على الظرف 💕</p>
     </section>
-
-    <!-- Letter Expanded -->
-    <div class="popup-overlay" id="letter-overlay" onclick="closeLetter()"></div>
-    <div class="letter-expanded" id="letter-expanded">
-        <p id="letter-text"></p>
-        <button class="letter-close" onclick="closeLetter()">اغلقي ❤️</button>
-    </div>
 
     <!-- ==================== MISS YOU ==================== -->
     <section id="miss-you" class="section">
@@ -1864,6 +1767,31 @@
 
 </main>
 
+<!-- ==================== NOTE MODAL (نافذة كتابة الملاحظة) ==================== -->
+<div class="popup-overlay" id="note-overlay" onclick="cancelMemory()"></div>
+<div class="note-modal" id="note-modal">
+    <h3 style="color: var(--warm-gold); margin-bottom: 15px; font-family: 'Aref Ruqaa', serif;">اكتبي حكاية الذكرى 📝</h3>
+    <textarea id="memory-note-input" placeholder="الصورة دي بتفكرك بإيه؟..."></textarea>
+    <div class="note-modal-btns">
+        <button class="save-note-btn" onclick="saveNewMemory()">حفظ الذكرى ❤️</button>
+        <button class="cancel-note-btn" onclick="cancelMemory()">إلغاء</button>
+    </div>
+</div>
+
+<!-- ==================== LIGHTBOX (نافذة عرض الصورة/الفيديو/الرسالة) ==================== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <div id="lightbox-media-container"></div>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+</div>
+
+<!-- Letter Expanded -->
+<div class="popup-overlay" id="letter-overlay" onclick="closeLetter()"></div>
+<div class="letter-expanded" id="letter-expanded">
+    <p id="letter-text"></p>
+    <button class="letter-close" onclick="closeLetter()">اغلقي ❤️</button>
+</div>
+
 <!-- ==================== MUSIC BUTTON ==================== -->
 <button class="music-btn" id="music-btn" onclick="toggleMusic()">🎵 تشغيل الموسيقى</button>
 
@@ -1874,13 +1802,6 @@
     <button class="mood-option" onclick="setMood('calm')">🌙 هادي</button>
     <button class="mood-option" onclick="setMood('sad')">🌧️ حزين</button>
     <button class="mood-option" onclick="setMood('happy')">☀️ سعيد</button>
-</div>
-
-<!-- ==================== LIGHTBOX ==================== -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <img id="lightbox-img" src="" alt="">
-    <p class="lightbox-caption" id="lightbox-caption"></p>
 </div>
 
 <!-- ==================== AUDIO ==================== -->
@@ -1897,7 +1818,7 @@ let introAnimationDone = false;
 
 // ==================== WORD MESSAGES ====================
 const wordMessages = {
-    ' روضتي': 'اسمك لوحده تحفه ...\nو بحب ديما علي طول الوقت اقولو❤️.',
+    'روضتي': 'اسمك لوحده تحفه ...\nو بحب ديما علي طول الوقت اقولو❤️.',
     'حبيبتي': ' حبيتك ل اسباب كتير اهمهم سبب فيهم اني حبيت شخصيتك تفهمك روحك ...\nو علي اتم الاستعداد اختارك تاني و تالت',
     'أميرتي': 'مش عشان كلمة أميرة حلوة...\nعشان إنتِ فعلًا ليكي مكان مختلف ف حياتي',
     'بنتي': 'عشان بخاف عليكي زي ما بخاف على أغلى حاجة عندي...\nوبحاول اخليكي ديما حسه ب الامان ',
@@ -1906,7 +1827,6 @@ const wordMessages = {
     'كل حاجة ليا': 'عشان لو حد سألني إيه أغلى حاجة عندك...\nهقوله بكل بساطة: انتي اغلي بنوته ف حياتي'
 };
 
-// ==================== FLOWER CHOICE MESSAGES ====================
 // ==================== FLOWER CHOICE MESSAGES ====================
 const flowerChoiceMessages = {
     'red': 'دي بتفكرني بشغفي وحبي الكبير ليكي.. حب حقيقي مالي قلبي ومخليني مش شايف غيرك في الدنيا دي.',
@@ -1930,7 +1850,6 @@ function initIntro() {
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;
 
-    // Center glow particle
     let centerGlow = { brightness: 0 };
 
     function createParticle(x, y, color, size) {
@@ -1954,7 +1873,6 @@ function initIntro() {
 
         const maxAngle = progress * Math.PI * 4;
 
-        // Draw spiral ornaments
         for (let i = 0; i < 3; i++) {
             ctx.beginPath();
             const offset = (i * Math.PI * 2) / 3;
@@ -1968,7 +1886,6 @@ function initIntro() {
             ctx.stroke();
         }
 
-        // Draw small curls
         if (progress > 0.3) {
             const curlProgress = (progress - 0.3) / 0.7;
             for (let i = 0; i < 8; i++) {
@@ -1985,7 +1902,6 @@ function initIntro() {
                 ctx.stroke();
             }
         }
-
         ctx.restore();
     }
 
@@ -2005,7 +1921,6 @@ function initIntro() {
             ctx.save();
             ctx.rotate(angle);
 
-            // Petal gradient
             const grad = ctx.createRadialGradient(0, -25 * scale, 0, 0, -25 * scale, 20 * scale);
             const hue = 340 + i * 5;
             grad.addColorStop(0, `hsla(${hue}, 80%, 90%, ${0.9 * scale})`);
@@ -2020,7 +1935,6 @@ function initIntro() {
             ctx.restore();
         }
 
-        // Center
         if (progress > 0.3) {
             const centerScale = Math.min((progress - 0.3) / 0.3, 1);
             const cGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, 12 * centerScale);
@@ -2031,7 +1945,6 @@ function initIntro() {
             ctx.arc(0, 0, 12 * centerScale, 0, Math.PI * 2);
             ctx.fill();
         }
-
         ctx.restore();
     }
 
@@ -2039,7 +1952,6 @@ function initIntro() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         time += 0.016;
 
-        // Phase 1: Center glow (0-2s)
         if (time < 2) {
             centerGlow.brightness = time / 2;
             const glow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 30 * centerGlow.brightness);
@@ -2049,7 +1961,6 @@ function initIntro() {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
-        // Phase 2: Ornaments (1-4s)
         if (time > 1 && time < 5) {
             ornamentProgress = Math.min((time - 1) / 3, 1);
             drawOrnaments(ornamentProgress);
@@ -2057,13 +1968,11 @@ function initIntro() {
             drawOrnaments(1);
         }
 
-        // Phase 3: Flower (3-6s)
         if (time > 3) {
             flowerProgress = Math.min((time - 3) / 3, 1);
             drawFlower(flowerProgress);
         }
 
-        // Particles
         if (time > 1.5) {
             if (Math.random() < 0.15) {
                 particles.push(createParticle(centerX, centerY));
@@ -2085,7 +1994,6 @@ function initIntro() {
             }
         });
 
-        // Show text after flower blooms
         if (time > 6.5 && !introAnimationDone) {
             introAnimationDone = true;
             document.getElementById('intro-content').classList.add('visible');
@@ -2239,7 +2147,6 @@ function initScrollReveal() {
 
     reveals.forEach(el => observer.observe(el));
 
-    // Word cards reveal
     const wordCards = document.querySelectorAll('.word-card');
     wordCards.forEach((card, i) => {
         setTimeout(() => {
@@ -2263,7 +2170,6 @@ function showWordMessage(el) {
     const message = wordMessages[word];
     const messageEl = document.getElementById('word-message');
 
-    // Remove active from all
     document.querySelectorAll('.word-card').forEach(c => c.classList.remove('active-word'));
     el.classList.add('active-word');
 
@@ -2277,6 +2183,7 @@ function showWordMessage(el) {
         messageEl.style.transition = 'all 0.5s ease';
     }, 200);
 }
+
 // ==================== DYNAMIC MEMORIES ====================
 let tempMediaData = null;
 let tempMediaType = null;
@@ -2289,7 +2196,6 @@ function handleMemorySelect(event) {
     const file = event.target.files[0];
     if (!file) return;
 
-    // تحذير للحجم لأن الـ LocalStorage مساحته محدودة بدون سيرفر حقيقي
     if (file.size > 3 * 1024 * 1024) {
         alert("يا روضتي الصورة أو الفيديو حجمهم كبير شوية، اختاري حاجة أصغر من 3 ميجا عشان الموقع يقدر يحفظها ❤️");
         event.target.value = '';
@@ -2420,22 +2326,6 @@ function chooseFlower(type) {
 }
 
 // ==================== LOVE LETTER ====================
-    .real-flower-img {
-    width: 65px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 12px;
-    border: 2px solid rgba(212, 168, 70, 0.4);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    transition: all 0.4s ease;
-}
-
-.flower-choice:hover .real-flower-img {
-    border-color: var(--warm-gold);
-    box-shadow: 0 8px 25px rgba(212, 168, 70, 0.4);
-    transform: scale(1.1);
-}
 function openEnvelope() {
     const envelope = document.getElementById('envelope');
     if (envelope.classList.contains('opened')) return;
@@ -2459,7 +2349,6 @@ function openEnvelope() {
         const expanded = document.getElementById('letter-expanded');
         const overlay = document.getElementById('letter-overlay');
 
-        // Type letter effect
         textEl.innerHTML = '';
         expanded.classList.add('active');
         overlay.classList.add('active');
@@ -2575,7 +2464,6 @@ function openGift() {
 
     box.classList.add('opened');
 
-    // Explosion of particles
     for (let i = 0; i < 25; i++) {
         setTimeout(() => {
             const el = document.createElement('div');
@@ -2634,7 +2522,6 @@ function initCinematicFlower() {
         const cx = canvas.width / 2;
         const cy = canvas.height / 2;
 
-        // Golden ornaments
         const ornProg = Math.min(time / 2, 1);
         if (ornProg > 0) {
             ctx.save();
@@ -2650,7 +2537,6 @@ function initCinematicFlower() {
                     const nextA = ((i + 1) / segments) * Math.PI * 2;
                     ctx.beginPath();
 
-                    // Ornamental curves
                     const x1 = Math.cos(a) * ringSize;
                     const y1 = Math.sin(a) * ringSize;
                     const x2 = Math.cos(nextA) * ringSize;
@@ -2667,7 +2553,6 @@ function initCinematicFlower() {
             ctx.restore();
         }
 
-        // Flower
         const flowerProg = Math.max(0, Math.min((time - 1.5) / 3, 1));
         if (flowerProg > 0) {
             ctx.save();
@@ -2676,7 +2561,6 @@ function initCinematicFlower() {
             const totalPetals = 10;
             const visiblePetals = Math.ceil(flowerProg * totalPetals);
 
-            // Outer petals
             for (let i = 0; i < visiblePetals; i++) {
                 const angle = (i / totalPetals) * Math.PI * 2 - Math.PI / 2;
                 const scale = i === visiblePetals - 1 ? (flowerProg * totalPetals) % 1 : 1;
@@ -2698,7 +2582,6 @@ function initCinematicFlower() {
                 ctx.restore();
             }
 
-            // Inner petals
             if (flowerProg > 0.4) {
                 const innerProg = (flowerProg - 0.4) / 0.6;
                 const innerPetals = Math.ceil(innerProg * 6);
@@ -2722,7 +2605,6 @@ function initCinematicFlower() {
                 }
             }
 
-            // Center
             if (flowerProg > 0.5) {
                 const centerScale = Math.min((flowerProg - 0.5) / 0.3, 1);
                 const cGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, 14 * centerScale);
@@ -2739,7 +2621,6 @@ function initCinematicFlower() {
             ctx.restore();
         }
 
-        // Particles
         if (time > 0.5 && Math.random() < 0.1) {
             particles.push({
                 x: cx + (Math.random() - 0.5) * 200,
@@ -2830,7 +2711,6 @@ function toggleMusic() {
         btn.textContent = '🎵 تشغيل الموسيقى';
         musicPlaying = false;
     } else {
-        // Try to create audio context with gentle tone
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (!window.musicContext) {
@@ -2921,7 +2801,6 @@ window.addEventListener('load', () => {
     initIntro();
 });
 
-// Navbar show on scroll
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const nav = document.getElementById('main-nav');
