@@ -711,7 +711,7 @@
             z-index: 2;
         }
 
-        /* ==================== CHOOSE FLOWER ==================== */
+       /* ==================== CHOOSE FLOWER ==================== */
         #choose-flower {
             background: radial-gradient(ellipse at center bottom, rgba(45, 27, 105, 0.3) 0%, var(--deep-black) 70%);
         }
@@ -719,15 +719,15 @@
         .flower-choices {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
-            margin-top: 30px;
-            max-width: 600px;
+            margin-top: 40px;
+            max-width: 800px; /* زيادة العرض لاستيعاب 5 كروت */
         }
 
         .flower-choice {
-            width: 100px;
-            height: 120px;
+            width: 130px; /* تكبير عرض الكارت */
+            height: 160px; /* تكبير طول الكارت */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -735,62 +735,69 @@
             cursor: pointer;
             transition: all 0.4s ease;
             border-radius: 20px;
-            padding: 10px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(212, 168, 70, 0.1);
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05)); /* لون خلفية أهدى */
+            border: 1px solid rgba(212, 168, 70, 0.15); /* حدود أرق */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .flower-choice:hover, .flower-choice:active {
-            transform: scale(1.1);
+            transform: translateY(-10px) scale(1.05); /* حركة لفوق مع التكبير */
             background: rgba(212, 168, 70, 0.08);
-            border-color: rgba(212, 168, 70, 0.3);
-            box-shadow: 0 0 25px rgba(212, 168, 70, 0.15);
+            border-color: rgba(212, 168, 70, 0.4);
+            box-shadow: 0 15px 30px rgba(212, 168, 70, 0.2);
         }
 
         .real-flower-img {
-            width: 65px;
-            height: 65px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 12px;
-            border: 2px solid rgba(212, 168, 70, 0.4);
+            width: 90px;  /* تكبير الصورة */
+            height: 90px; /* تكبير الصورة */
+            object-fit: cover; /* لضمان عدم تشوه الصورة */
+            border-radius: 50%; /* لجعل الصورة دائرية تماماً */
+            margin-bottom: 15px;
+            border: 3px solid rgba(212, 168, 70, 0.5); /* إطار ذهبي للصورة */
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             transition: all 0.4s ease;
         }
 
         .flower-choice:hover .real-flower-img {
             border-color: var(--warm-gold);
-            box-shadow: 0 8px 25px rgba(212, 168, 70, 0.4);
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg); /* تكبير الصورة مع دوران خفيف */
         }
 
         .flower-choice-label {
-            font-size: 0.85rem;
+            font-size: 1rem;
             color: var(--creamy-white);
-            opacity: 0.7;
+            font-weight: 500;
+            font-family: 'Aref Ruqaa', serif; /* خط عربي أصيل */
+            letter-spacing: 1px;
         }
 
         .flower-response {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
-            max-width: 450px;
-            min-height: 80px;
+            max-width: 600px;
+            min-height: 100px;
+            padding: 20px;
+            background: rgba(26, 10, 46, 0.6); /* خلفية خفيفة للرد */
+            border-radius: 15px;
+            border: 1px solid rgba(196, 166, 232, 0.2);
+            opacity: 0; /* مخفي في البداية */
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
-
-        .flower-response p {
-            font-size: 1.15rem;
-            line-height: 2;
-            color: var(--soft-pink);
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.5s ease;
-        }
-
-        .flower-response p.visible {
+        
+        /* كلاس يضاف بالـ JS لإظهار الرد */
+        .flower-response.show-container {
             opacity: 1;
             transform: translateY(0);
         }
 
+        .flower-response p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--warm-gold); /* لون ذهبي للرد */
+            font-family: 'Tajawal', sans-serif;
+        }
         /* ==================== LOVE LETTER ==================== */
         #love-letter {
             background: radial-gradient(ellipse at top, rgba(26, 10, 46, 0.4) 0%, var(--deep-black) 70%);
@@ -1591,34 +1598,40 @@
     </section>
 
     <!-- ==================== CHOOSE FLOWER ==================== -->
+   <!-- ==================== CHOOSE FLOWER ==================== -->
     <section id="choose-flower" class="section">
-        <h2 class="section-title reveal">اختاري وردة... 🌷</h2>
+        <h2 class="section-title reveal">اختاري وردتك يا روضتي... 🌷</h2>
         <div class="section-divider reveal"></div>
-        <p class="section-text reveal" style="margin-bottom: 20px;">كل وردة من دول بتعبر عن حاجة بشوفها فيكي، اختاري وردة وشوفي قلبي بيقولك إيه.</p>
+        <p class="section-text reveal" style="margin-bottom: 20px;">كل وردة من دول ليها حكاية، وبتفكرني بحاجة حلوة فيكي... شوفي قلبي بيقولك إيه ❤️</p>
 
         <div class="flower-choices reveal">
+            <!-- وردة حمراء -->
             <div class="flower-choice" onclick="chooseFlower('red')">
-                <img src="https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=200&q=80" alt="وردة حمراء" class="real-flower-img">
+                <img src="https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&q=80" alt="وردة حمراء" class="real-flower-img">
                 <span class="flower-choice-label">وردة حمراء</span>
             </div>
 
+            <!-- وردة بيضاء (تم تغيير الصورة لتكون بيضاء فعلاً) -->
+            <div class="flower-choice" onclick="chooseFlower('white')">
+                <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=200&q=80" alt="وردة بيضاء" class="real-flower-img">
+                <span class="flower-choice-label">وردة بيضاء</span>
+            </div>
+
+            <!-- وردة وردية -->
             <div class="flower-choice" onclick="chooseFlower('pink')">
-                <img src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=200&q=80" alt="وردة وردية" class="real-flower-img">
+                <img src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=200&q=80" alt="وردة وردية" class="real-flower-img">
                 <span class="flower-choice-label">وردة وردي</span>
             </div>
 
-            <div class="flower-choice" onclick="chooseFlower('white')">
-                <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=200&q=80" alt="وردة بيضاء" class="real-flower-img">
-                <span class="flower-choice-label">وردة بيضا</span>
-            </div>
-
+            <!-- زهرة بنفسجية -->
             <div class="flower-choice" onclick="chooseFlower('purple')">
-                <img src="https://images.unsplash.com/photo-1565011523534-747a8601f10a?auto=format&fit=crop&w=200&q=80" alt="زهرة بنفسجي" class="real-flower-img">
-                <span class="flower-choice-label">وردة بنفسجي</span>
+                <img src="https://images.unsplash.com/photo-1565011523534-747a8601f10a?w=200&q=80" alt="زهرة بنفسجي" class="real-flower-img">
+                <span class="flower-choice-label">زهرة بنفسجي</span>
             </div>
 
+            <!-- توليب -->
             <div class="flower-choice" onclick="chooseFlower('tulip')">
-                <img src="https://images.unsplash.com/photo-1520764836495-20703c39df4a?auto=format&fit=crop&w=200&q=80" alt="توليب" class="real-flower-img">
+                <img src="https://images.unsplash.com/photo-1520764836495-20703c39df4a?w=200&q=80" alt="توليب" class="real-flower-img">
                 <span class="flower-choice-label">توليب</span>
             </div>
         </div>
@@ -1627,7 +1640,6 @@
             <p id="flower-response-text"></p>
         </div>
     </section>
-
     <!-- ==================== LOVE LETTER ==================== -->
     <section id="love-letter" class="section">
         <h2 class="section-title reveal">عندي حاجة عايز أقولهالك...</h2>
@@ -1817,23 +1829,24 @@ let particlesArray = [];
 let introAnimationDone = false;
 
 // ==================== WORD MESSAGES ====================
+// ==================== WORD MESSAGES ====================
 const wordMessages = {
-    'روضتي': 'اسمك لوحده تحفه ...\nو بحب ديما علي طول الوقت اقولو❤️.',
-    'حبيبتي': ' حبيتك ل اسباب كتير اهمهم سبب فيهم اني حبيت شخصيتك تفهمك روحك ...\nو علي اتم الاستعداد اختارك تاني و تالت',
-    'أميرتي': 'مش عشان كلمة أميرة حلوة...\nعشان إنتِ فعلًا ليكي مكان مختلف ف حياتي',
-    'بنتي': 'عشان بخاف عليكي زي ما بخاف على أغلى حاجة عندي...\nوبحاول اخليكي ديما حسه ب الامان ',
-    'روحي': 'لأنك بقيتي جزء من كل حاجة جوايا...\nمن أفكاري، من مشاعري، مني انا ',
-    'حياتي': 'عشان من غيرك الدنيا بتبقى ناقصة...\nووجودك بيخلي كل حاجة ليها معنى.',
-    'كل حاجة ليا': 'عشان لو حد سألني إيه أغلى حاجة عندك...\nهقوله بكل بساطة: انتي اغلي بنوته ف حياتي'
+    'روضتي': 'اسمك لوحده بيخطف قلبي كل ما بنطقه... \nإنتِ الجنة اللي ربنا رزقني بيها في الدنيا دي 🌸❤️',
+    'حبيبتي': 'حبيتك عشان إنتِ الوحيدة اللي قدرت تفهم روحي وتطمنها... 🫂\nولو اتعاد الزمن ألف مرة هفضل أختارك في كل مرة 💖✨',
+    'أميرتي': 'مش عشان الكلمة حلوة، بس عشان إنتِ فعلاً مكانك جوه قلبي... 👑\nومفيش حد غيرك يقدر ياخد المكان ده 💘',
+    'بنتي': 'علشان بخاف عليكي أكتر من روحي... \nيا رب أقدر دايماً أكون الأمان اللي بتدوري عليه 🫂❤️',
+    'روحي': 'لأنك مبقتيش مجرد شخص في حياتي... إنتِ بقيتي حتة مني... ✨\nنصي التاني اللي بيكملني وبيحلي أيامي 💕',
+    'حياتي': 'عشان من غيرك أيامي مكنش هيبقى ليها طعم ولا لون... 🌸\nوجودك هو اللي مخلي للحياة معنى، إنتِ العوض الحلو 💖',
+    'كل حاجة ليا': 'عشان لو سألوني إيه أغلى حاجة بتملكها في الدنيا دي... \nهقولهم اسمك وأنا مطمن إنك فعلاً كل دنيتي 🌍❤️'
 };
 
 // ==================== FLOWER CHOICE MESSAGES ====================
 const flowerChoiceMessages = {
-    'red': 'دي بتفكرني بشغفي وحبي الكبير ليكي.. حب حقيقي مالي قلبي ومخليني مش شايف غيرك في الدنيا دي.',
-    'pink': 'بتفكرني برقتك وحنيتك اللي بتطمني.. لمستك اللي بتداوي أي جرح، وضحكتك اللي بتنور أيامي.',
-    'white': 'زي قلبك الأبيض بالظبط.. أنقى وأطيب قلب عرفته، المكان الوحيد اللي برتاح فيه من دوشة العالم.',
-    'purple': 'بتفكرني بإنك نادرة ومفيش زيك.. سحرك الخاص اللي خلاني أقع في حبك من غير ما أحس.',
-    'tulip': 'بتفكرني بجمالك الهادي والأنيق.. كل ما ببص في عينيكي بحس إني لقيت السكينة اللي كنت بدور عليها طول عمري.'
+    'red': 'الوردة دي بتفكرني بحبي ليكي.. حب مالي قلبي وواخد كل تفكيري.. إنتِ الشغف اللي بيخليني أكمل كل يوم وأنا مبسوط إنك معايا. ❤️🌹',
+    'white': 'زي الوردة دي بالظبط.. قلبك أبيض ونقي وأطيب قلب عرفته.. إنتِ المكان اللي بهرب ليه من دوشة العالم عشان ألاقي راحتي. 🤍🕊️',
+    'pink': 'بتفكرني برقتك وحنيتك اللي بتطمن قلبي.. ضحكتك اللي بتنور أيامي ولمستك اللي بتداوي أي وجع جوايا. 🌸✨',
+    'purple': 'عشان إنتِ نادرة ومفيش زيك اتنين.. سحرك الخاص واختلافك هو اللي خلاني أقع في غرامك من غير ما أحس. 💜🌌',
+    'tulip': 'بتفكرني بجمالك الهادي والأنيق.. كل ما بشوفك بحس إني لقيت السكينة والهدوء اللي كنت بدور عليهم طول عمري. 🌷🥺'
 };
 
 // ==================== INTRO ANIMATION ====================
@@ -2315,14 +2328,16 @@ function closeLightbox(event) {
 // ==================== CHOOSE FLOWER ====================
 function chooseFlower(type) {
     const msg = flowerChoiceMessages[type];
+    const responseContainer = document.getElementById('flower-response');
     const textEl = document.getElementById('flower-response-text');
 
-    textEl.classList.remove('visible');
-
+    // إخفاء النص الحالي أولاً
+    responseContainer.classList.remove('show-container');
+    
     setTimeout(() => {
-        textEl.innerHTML = msg.replace(/\n/g, '<br>');
-        textEl.classList.add('visible');
-    }, 200);
+        textEl.innerHTML = msg.replace(/\n/g, '<br>'); // إضافة النص الجديد
+        responseContainer.classList.add('show-container'); // إظهار الكونتينر بالنص الجديد
+    }, 400); // الانتظار قليلاً حتى يختفي النص القديم
 }
 
 // ==================== LOVE LETTER ====================
