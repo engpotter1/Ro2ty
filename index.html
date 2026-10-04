@@ -92,39 +92,44 @@
         }
 
         .intro-subtitle {
-            font-family: 'Tajawal', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            color: var(--soft-pink);
-            margin-bottom: 40px;
-            line-height: 2;
-            text-shadow: 0 0 20px rgba(244, 160, 192, 0.3);
-        }
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--soft-pink);
+    letter-spacing: 1.5px; /* بيدي طابع سينمائي هادي */
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(244, 160, 192, 0.4);
+}
 
         @keyframes goldGlow {
             0%, 100% { text-shadow: 0 0 30px rgba(212, 168, 70, 0.5); }
             50% { text-shadow: 0 0 60px rgba(212, 168, 70, 0.8), 0 0 100px rgba(212, 168, 70, 0.3); }
         }
 
-        .enter-btn {
-            background: linear-gradient(135deg, var(--warm-gold), #c4943a);
-            color: var(--deep-black);
-            border: none;
-            padding: 16px 45px;
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 30px rgba(212, 168, 70, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
-        }
+       .enter-btn {
+    background: rgba(212, 168, 70, 0.1); /* شفافية بتدي تأثير الإزاز */
+    border: 1px solid var(--warm-gold);
+    color: var(--warm-gold);
+    padding: 16px 50px;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px); /* تأثير الزجاج المغبش */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(212, 168, 70, 0.2), inset 0 0 10px rgba(212, 168, 70, 0.1);
+}
 
-        .enter-btn:hover, .enter-btn:active {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(212, 168, 70, 0.6), inset 0 1px 0 rgba(255,255,255,0.3);
-        }
+.enter-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: rgba(212, 168, 70, 0.2);
+    box-shadow: 0 0 35px rgba(212, 168, 70, 0.6), inset 0 0 15px rgba(212, 168, 70, 0.3);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
 
         .enter-btn::before {
             content: '';
