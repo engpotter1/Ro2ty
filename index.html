@@ -562,7 +562,7 @@
             padding: 20px;
         }
 
-        /* ستايل كروت الـ Polaroid الجديد مع شريط اللزق */
+        /* ستايل كروت الـ Polaroid مع شريط اللزق */
         .memory-card {
             background: #fdfbf7;
             padding: 12px 12px 40px 12px;
@@ -974,55 +974,27 @@
             box-shadow: 0 0 30px rgba(196, 166, 232, 0.2);
         }
 
-        /* ==================== FUTURE SECTION ==================== */
+        /* ==================== FUTURE SECTION (التايم لاين الأصلي) ==================== */
         #future {
             background: radial-gradient(ellipse at top center, rgba(26, 10, 46, 0.5) 0%, var(--deep-black) 70%);
         }
 
-        /* التايم لاين المضيء الجديد */
         .timeline {
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            margin: 40px auto;
+            gap: 0;
+            margin: 30px auto;
             max-width: 400px;
-            padding: 20px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            background: linear-gradient(180deg, transparent, rgba(212, 168, 70, 0.5), transparent);
         }
 
         .timeline-item {
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
-            padding: 25px 0;
+            transition: all 0.6s ease;
+            padding: 15px 0;
             position: relative;
-            width: 100%;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            background: var(--warm-gold);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--warm-gold), 0 0 30px var(--warm-gold);
-            z-index: 2;
         }
 
         .timeline-item.visible {
@@ -1035,6 +1007,18 @@
             font-size: 1.3rem;
             color: var(--warm-gold);
             text-shadow: 0 0 15px rgba(212, 168, 70, 0.3);
+        }
+
+        .timeline-arrow {
+            font-size: 1.5rem;
+            color: rgba(212, 168, 70, 0.4);
+            margin: 5px 0;
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .timeline-arrow.visible {
+            opacity: 1;
         }
 
         .future-final {
@@ -1587,17 +1571,22 @@
 
     <button class="miss-btn reveal" style="position: relative; z-index: 2;" onclick="missYouMore()">وحشتيني أكتر ❤️</button>
 </section>
-    <!-- ==================== FUTURE ==================== -->
+    <!-- ==================== FUTURE (التايم لاين الأصلي بالشكل القديم) ==================== -->
     <section id="future" class="section">
         <h2 class="section-title reveal">كل اللي جاي...</h2>
         <div class="section-divider reveal"></div>
 
         <div class="timeline" id="timeline">
             <div class="timeline-item"><span class="timeline-text">أول مرة</span></div>
+            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">أول ذكرى</span></div>
+            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">كل لحظة حلوة</span></div>
+            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">كل اللي جاي</span></div>
+            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">إنتِ وأنا</span></div>
+            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">لسه الحكاية في أولها...</span></div>
         </div>
 
@@ -2092,7 +2081,7 @@ function showWordMessage(el) {
     }, 200);
 }
 
-// ==================== DYNAMIC MEMORIES (Local Storage حالياً) ====================
+// ==================== DYNAMIC MEMORIES ====================
 let tempMediaData = null;
 let tempMediaType = null;
 
@@ -2244,7 +2233,7 @@ function openEnvelope() {
 
 أوعدك أفضل جنبك واحبك كل يوم اكتر من اليوم القبله وأحافظ عليكي جوه عيني 
 
-بحبك يا روضتي ❤️️`;
+بحبك يا روضتي ❤️`;
 
         const textEl = document.getElementById('letter-text');
         const expanded = document.getElementById('letter-expanded');
@@ -2328,9 +2317,10 @@ function initStars() {
     }
 }
 
-// ==================== TIMELINE ====================
+// ==================== TIMELINE (التايم لاين بالأسهم الأصلي) ====================
 function initTimeline() {
     const items = document.querySelectorAll('.timeline-item');
+    const arrows = document.querySelectorAll('.timeline-arrow');
     const finalMsg = document.getElementById('future-final');
 
     const observer = new IntersectionObserver((entries) => {
@@ -2339,6 +2329,9 @@ function initTimeline() {
                 items.forEach((item, i) => {
                     setTimeout(() => {
                         item.classList.add('visible');
+                        if (arrows[i]) {
+                            setTimeout(() => arrows[i].classList.add('visible'), 300);
+                        }
                     }, i * 500);
                 });
 
