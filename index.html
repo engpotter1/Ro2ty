@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scale=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>عالم روضتي ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap');
@@ -48,12 +48,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
             z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             transition: opacity 1.5s ease;
         }
 
@@ -62,24 +60,59 @@
             pointer-events: none;
         }
 
+        /* خلفية البحيرة والغروب مع طبقة شفافة غامقة (Overlay) */
+        .intro-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, rgba(5, 2, 8, 0.3), rgba(5, 2, 8, 0.85)), 
+                              url('https://images.unsplash.com/photo-1521404176326-1b327b8bfbc9?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
         #intro-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 2;
         }
 
+        /* توزيع العناصر عشان الوردة تفضل في النص والكلام فوق وتحت */
         .intro-content {
             position: relative;
-            z-index: 2;
-            text-align: center;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* دي اللي بتفصل العنوان عن الزرار */
+            padding: 12vh 20px 10vh 20px;
             opacity: 0;
             transition: opacity 1s ease;
         }
 
         .intro-content.visible {
             opacity: 1;
+        }
+
+        .top-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bottom-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* مسافة بين الجملة والزرار */
         }
 
         .intro-title {
@@ -91,45 +124,46 @@
             animation: goldGlow 3s ease-in-out infinite;
         }
 
+        /* تظبيط الجملة عشان تليق مع الخلفية الجديدة */
         .intro-subtitle {
-    font-family: 'Tajawal', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    color: var(--soft-pink);
-    letter-spacing: 1.5px; /* بيدي طابع سينمائي هادي */
-    font-weight: 300;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    text-shadow: 0 0 15px rgba(244, 160, 192, 0.4);
-}
+            font-family: 'Tajawal', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--creamy-white);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(244, 160, 192, 0.4);
+            letter-spacing: 1.5px;
+            font-weight: 300;
+        }
 
         @keyframes goldGlow {
             0%, 100% { text-shadow: 0 0 30px rgba(212, 168, 70, 0.5); }
             50% { text-shadow: 0 0 60px rgba(212, 168, 70, 0.8), 0 0 100px rgba(212, 168, 70, 0.3); }
         }
 
-       .enter-btn {
-    background: rgba(212, 168, 70, 0.1); /* شفافية بتدي تأثير الإزاز */
-    border: 1px solid var(--warm-gold);
-    color: var(--warm-gold);
-    padding: 16px 50px;
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 700;
-    border-radius: 50px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px); /* تأثير الزجاج المغبش */
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 20px rgba(212, 168, 70, 0.2), inset 0 0 10px rgba(212, 168, 70, 0.1);
-}
+        .enter-btn {
+            background: rgba(212, 168, 70, 0.1);
+            border: 1px solid var(--warm-gold);
+            color: var(--warm-gold);
+            padding: 16px 50px;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(212, 168, 70, 0.2), inset 0 0 10px rgba(212, 168, 70, 0.1);
+        }
 
-.enter-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    background: rgba(212, 168, 70, 0.2);
-    box-shadow: 0 0 35px rgba(212, 168, 70, 0.6), inset 0 0 15px rgba(212, 168, 70, 0.3);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
+        .enter-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: rgba(212, 168, 70, 0.2);
+            box-shadow: 0 0 35px rgba(212, 168, 70, 0.6), inset 0 0 15px rgba(212, 168, 70, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
 
         .enter-btn::before {
             content: '';
@@ -1410,13 +1444,22 @@
 </head>
 <body>
 
+
 <!-- ==================== INTRO SCREEN ==================== -->
 <div id="intro-screen">
+    <!-- خلفية البحيرة والغروب مع طبقة شفافة غامقة عشان الكلام يبان -->
+    <div class="intro-bg"></div>
     <canvas id="intro-canvas"></canvas>
+    
     <div class="intro-content" id="intro-content">
-        <h1 class="intro-title" id="intro-title">إلى روضتي...</h1>
-        <p class="intro-subtitle" id="intro-subtitle">حبيبتي، أميرتي، بنتي، روحي، وحياتي ❤️</p>
-        <button class="enter-btn" id="enter-btn" onclick="enterWebsite()">ادخلي عالمي يا روضتي 🌷</button>
+        <div class="top-section">
+            <h1 class="intro-title" id="intro-title">إلى روضتي...</h1>
+        </div>
+        
+        <div class="bottom-section">
+            <p class="intro-subtitle" id="intro-subtitle">حبيبتي، أميرتي، بنتي، روحي، وحياتي ❤️</p>
+            <button class="enter-btn" id="enter-btn" onclick="enterWebsite()">ادخلي عالمي يا روضتي 🌷</button>
+        </div>
     </div>
 </div>
 
@@ -1771,7 +1814,7 @@ function initIntro() {
     let flowerProgress = 0;
     let time = 0;
     let centerX = canvas.width / 2;
-    let centerY = canvas.height / 2;
+    let centerY = canvas.height * 0.45; // رفعنا الوردة شوية عشان ندي مساحة للكلام
 
     let centerGlow = { brightness: 0 };
 
@@ -1933,7 +1976,7 @@ function initIntro() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         centerX = canvas.width / 2;
-        centerY = canvas.height / 2;
+        centerY = canvas.height * 0.45; // عشان يفضل مرفوع وقت التصغير والتكبير
     });
 }
 
