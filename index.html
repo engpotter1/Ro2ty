@@ -1595,33 +1595,31 @@
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ==================== FIREBASE REAL-TIME SYNC SCRIPT ==================== -->
+<!-- ==================== FIREBASE REAL-TIME SYNC SCRIPT (بدون الحاجة لـ Storage) ==================== -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
     import { getDatabase, ref as dbRef, push, onValue, remove as removeDb } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-    import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 
     const firebaseConfig = {
-      apiKey: "AIzaSyCAPkbyfh4bF9-FUxRptRmJ0SLhqi9v4g",
-      authDomain: "rawda-world.firebaseapp.com",
-      databaseURL: "https://rawda-world-default-rtdb.firebaseio.com",
-      projectId: "rawda-world",
-      storageBucket: "rawda-world.firebasestorage.app",
-      messagingSenderId: "4170969474",
-      appId: "1:4170969474:web:1b291f5e6d2be482d99f9b"
+        apiKey: "AIzaSyCAPkbyfh4bF9-FUxRptRmJ0SLhqi9v4g",
+        authDomain: "rawda-world.firebaseapp.com",
+        databaseURL: "https://rawda-world-default-rtdb.firebaseio.com",
+        projectId: "rawda-world",
+        storageBucket: "rawda-world.firebasestorage.app",
+        messagingSenderId: "4170969474",
+        appId: "1:4170969474:web:1b291f5e6d2be482d99f9b"
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const storage = getStorage(app);
 
-    let tempMediaFile = null;
+    let tempMediaData = null;
     let tempMediaType = null;
 
     window.cancelMemory = function() {
         document.getElementById('note-overlay').classList.remove('active');
         document.getElementById('note-modal').classList.remove('active');
-        tempMediaFile = null;
+        tempMediaData = null;
         tempMediaType = null;
         document.getElementById('memory-upload').value = '';
         const saveBtn = document.querySelector('.save-note-btn');
@@ -1633,66 +1631,57 @@
         const file = event.target.files[0];
         if (!file) return;
 
-        if (file.size > 5 * 1024 * 1024) {
-            alert("يا روضتي الصورة حجمها كبير شوية (أكبر من 5 ميجا)، اختاري صورة أصغر ❤️");
+        // للصور العادية بحجم مناسب عشان تتسيف في الداتابيز بسلاسة
+        if (file.size > 3 * 1024 * 1024) {
+            alert("يا روضتي الصورة حجمها كبير شوية (أكبر من 3 ميجا)، اختاري صورة أصغر ❤️");
             event.target.value = '';
             return;
         }
 
-        tempMediaFile = file;
-        tempMediaType = file.type.startsWith('video/') ? 'video' : 'image';
-        
-        document.getElementById('note-overlay').classList.add('active');
-        document.getElementById('note-modal').classList.add('active');
-        document.getElementById('memory-note-input').value = '';
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            tempMediaData = e.target.result; // تحويل الصورة لكود Base64
+            tempMediaType = file.type.startsWith('video/') ? 'video' : 'image';
+            
+            document.getElementById('note-overlay').classList.add('active');
+            document.getElementById('note-modal').classList.add('active');
+            document.getElementById('memory-note-input').value = '';
+        };
+        reader.readAsDataURL(file);
     }
 
     window.saveNewMemory = function() {
         const note = document.getElementById('memory-note-input').value.trim();
-        if (!tempMediaFile) return;
+        if (!tempMediaData) return;
 
         const saveBtn = document.querySelector('.save-note-btn');
-        saveBtn.textContent = 'جاري الرفع... ⏳';
+        saveBtn.textContent = 'جاري الحفظ... ⏳';
         saveBtn.disabled = true;
 
-        const fileExt = tempMediaFile.name.split('.').pop();
-        const fileName = `memories/${Date.now()}.${fileExt}`;
-        const fileRef = storageRef(storage, fileName);
-        const uploadTask = uploadBytesResumable(fileRef, tempMediaFile);
+        const newMemory = {
+            url: tempMediaData,
+            type: tempMediaType,
+            note: note || 'ذكرى حلوة ❤️',
+            rotation: (Math.random() * 6 - 3).toFixed(1),
+            timestamp: Date.now()
+        };
 
-        uploadTask.on('state_changed', null, 
-            (error) => {
-                console.error("خطأ في الرفع:", error);
-                alert("حصلت مشكلة واحنا بنرفع الصورة 😔");
+        push(dbRef(db, 'memories'), newMemory)
+            .then(() => {
                 cancelMemory();
-            }, 
-            () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    const newMemory = {
-                        url: downloadURL,
-                        storagePath: fileName,
-                        type: tempMediaType,
-                        note: note || 'ذكرى حلوة ❤️',
-                        rotation: (Math.random() * 6 - 3).toFixed(1),
-                        timestamp: Date.now()
-                    };
-
-                    push(dbRef(db, 'memories'), newMemory)
-                        .then(() => cancelMemory())
-                        .catch((error) => console.error("خطأ في الحفظ:", error));
-                });
-            }
-        );
+            })
+            .catch((error) => {
+                console.error("خطأ في الحفظ:", error);
+                alert("حصلت مشكلة أثناء الحفظ، تأكد من تفعيل Realtime Database ❤️");
+                saveBtn.textContent = 'حفظ الذكرى ❤️';
+                saveBtn.disabled = false;
+            });
     }
 
-    window.deleteMemory = function(key, storagePath, event) {
+    window.deleteMemory = function(key, event) {
         event.stopPropagation();
         if(confirm('متأكدة إنك عايزة تمسحي الذكرى دي؟')) {
-            removeDb(dbRef(db, `memories/${key}`))
-                .then(() => {
-                    const fileRef = storageRef(storage, storagePath);
-                    deleteObject(fileRef).catch((error) => console.error("خطأ في مسح الملف:", error));
-                });
+            removeDb(dbRef(db, `memories/${key}`)).catch((error) => console.error("خطأ في المسح:", error));
         }
     }
 
@@ -1714,15 +1703,19 @@
         memoriesArray.forEach(mem => {
             const card = document.createElement('div');
             card.className = 'memory-card';
-            card.style.setProperty('--rot', mem.rotation);
+            card.style.setProperty('--rot', mem.rotation || '0');
             
             let mediaHtml = mem.type === 'video' ? `<video class="memory-media" src="${mem.url}" muted></video>` : `<img class="memory-media" src="${mem.url}" alt="Memory" loading="lazy">`;
 
             card.innerHTML = `
-                <button class="delete-memory" onclick="deleteMemory('${mem.key}', '${mem.storagePath}', event)">✕</button>
+                <button onclick="deleteMemory('${mem.key}', event)" style="position: absolute; top: -10px; left: -10px; background: var(--deep-rose); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 1rem; cursor: pointer; opacity: 0; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(0,0,0,0.3); z-index: 20;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">✕</button>
                 ${mediaHtml}
                 <div class="memory-note">${mem.note}</div>
             `;
+            
+            // عشان نخلي زرار المسح يظهر عند الهوفر كويس
+            card.onmouseenter = () => card.querySelector('button').style.opacity = '1';
+            card.onmouseleave = () => card.querySelector('button').style.opacity = '0';
             
             card.onclick = () => window.openLightbox(mem.url, mem.type, mem.note);
             grid.appendChild(card);
