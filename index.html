@@ -62,18 +62,17 @@
 
         /* خلفية البحيرة والغروب مع طبقة شفافة غامقة (Overlay) */
         .intro-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* حطينا اسم الصورة الجديدة هنا */
-    background-image: linear-gradient(to bottom, rgba(5, 2, 8, 0.3), rgba(5, 2, 8, 0.85)), 
-                      url('simple-sunset-flowers.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-}
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, rgba(5, 2, 8, 0.3), rgba(5, 2, 8, 0.85)), 
+                              url('simple-sunset-flowers.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
 
         #intro-canvas {
             position: absolute;
@@ -84,7 +83,6 @@
             z-index: 2;
         }
 
-        /* توزيع العناصر عشان الوردة تفضل في النص والكلام فوق وتحت */
         .intro-content {
             position: relative;
             z-index: 3;
@@ -93,7 +91,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* دي اللي بتفصل العنوان عن الزرار */
+            justify-content: space-between;
             padding: 12vh 20px 10vh 20px;
             opacity: 0;
             transition: opacity 1s ease;
@@ -113,7 +111,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px; /* مسافة بين الجملة والزرار */
+            gap: 15px;
         }
 
         .intro-title {
@@ -125,7 +123,6 @@
             animation: goldGlow 3s ease-in-out infinite;
         }
 
-        /* تظبيط الجملة عشان تليق مع الخلفية الجديدة */
         .intro-subtitle {
             font-family: 'Tajawal', sans-serif;
             font-size: clamp(1rem, 3vw, 1.3rem);
@@ -466,19 +463,22 @@
             margin: 30px auto;
         }
 
+        /* ستايل كروت الكلمات الجديد (الإزازي) */
         .word-card {
-            background: linear-gradient(135deg, rgba(212, 168, 70, 0.1), rgba(196, 166, 232, 0.05));
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 168, 70, 0.2);
             padding: 15px 30px;
-            border-radius: 20px;
+            border-radius: 15px;
             cursor: pointer;
             transition: all 0.4s ease;
             font-family: 'Aref Ruqaa', serif;
             font-size: 1.3rem;
             color: var(--warm-gold);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             opacity: 0;
             transform: translateY(30px) scale(0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .word-card.revealed {
@@ -487,16 +487,16 @@
         }
 
         .word-card:hover, .word-card:active {
-            background: linear-gradient(135deg, rgba(212, 168, 70, 0.2), rgba(196, 166, 232, 0.1));
-            border-color: rgba(212, 168, 70, 0.5);
-            box-shadow: 0 0 25px rgba(212, 168, 70, 0.2);
-            transform: translateY(-3px) scale(1.05);
+            border-color: rgba(212, 168, 70, 0.6);
+            box-shadow: 0 0 25px rgba(212, 168, 70, 0.3), inset 0 0 10px rgba(212, 168, 70, 0.1);
+            transform: translateY(-5px) scale(1.05);
         }
 
         .word-card.active-word {
-            background: linear-gradient(135deg, rgba(212, 168, 70, 0.3), rgba(244, 160, 192, 0.1));
+            background: rgba(212, 168, 70, 0.15);
             border-color: var(--warm-gold);
-            box-shadow: 0 0 30px rgba(212, 168, 70, 0.3);
+            box-shadow: 0 0 30px rgba(212, 168, 70, 0.5), inset 0 0 15px rgba(212, 168, 70, 0.2);
+            text-shadow: 0 0 10px rgba(212, 168, 70, 0.8);
         }
 
         .word-message {
@@ -562,22 +562,37 @@
             padding: 20px;
         }
 
-        /* شكل الكارت (Polaroid) */
+        /* ستايل كروت الـ Polaroid الجديد مع شريط اللزق */
         .memory-card {
             background: #fdfbf7;
-            padding: 12px 12px 25px 12px;
-            border-radius: 5px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            padding: 12px 12px 40px 12px;
+            border-radius: 2px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             transform: rotate(calc(var(--rot) * 1deg));
         }
 
+        .memory-card::after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-4deg);
+            width: 90px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+            border-radius: 2px;
+            z-index: 5;
+        }
+
         .memory-card:hover {
-            transform: scale(1.05) rotate(0deg);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 20px rgba(212, 168, 70, 0.2);
-            z-index: 2;
+            transform: scale(1.08) rotate(0deg) translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.8), 0 0 25px rgba(212, 168, 70, 0.3);
+            z-index: 10;
         }
 
         .memory-media {
@@ -617,6 +632,7 @@
             opacity: 0;
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            z-index: 20;
         }
 
         .memory-card:hover .delete-memory {
@@ -750,6 +766,7 @@
             cursor: pointer;
             z-index: 2;
         }
+
         /* ==================== LOVE LETTER ==================== */
         #love-letter {
             background: radial-gradient(ellipse at top, rgba(26, 10, 46, 0.4) 0%, var(--deep-black) 70%);
@@ -791,19 +808,30 @@
             transform: rotateX(180deg);
         }
 
+        /* نبض القلب على الظرف */
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            15% { transform: translate(-50%, -50%) scale(1.25); }
+            30% { transform: translate(-50%, -50%) scale(1); }
+            45% { transform: translate(-50%, -50%) scale(1.25); }
+        }
+
         .envelope-heart {
             position: absolute;
             top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 2rem;
+            font-size: 2.2rem;
             z-index: 4;
-            transition: all 0.5s ease;
+            transition: opacity 0.5s ease;
+            animation: heartbeat 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(212, 38, 126, 0.5));
         }
 
         .envelope-container.opened .envelope-heart {
             opacity: 0;
             transform: translate(-50%, -50%) scale(0);
+            animation: none;
         }
 
         .envelope-inner {
@@ -817,10 +845,14 @@
             justify-content: center;
         }
 
+        /* لون ورق الرسالة الكلاسيكي */
+        .letter-paper, .letter-expanded {
+            background: linear-gradient(180deg, #f4e8d1, #e6d5b8);
+        }
+
         .letter-paper {
             width: 90%;
             height: 85%;
-            background: linear-gradient(180deg, #fefcf7, #f9f3ea);
             border-radius: 5px;
             padding: 20px 15px;
             transform: translateY(20px);
@@ -838,7 +870,6 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
-            background: linear-gradient(180deg, #fefcf7, #f9f3ea);
             border-radius: 20px;
             padding: 40px 25px;
             max-width: 400px;
@@ -948,22 +979,50 @@
             background: radial-gradient(ellipse at top center, rgba(26, 10, 46, 0.5) 0%, var(--deep-black) 70%);
         }
 
+        /* التايم لاين المضيء الجديد */
         .timeline {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0;
-            margin: 30px auto;
+            position: relative;
+            margin: 40px auto;
             max-width: 400px;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: linear-gradient(180deg, transparent, rgba(212, 168, 70, 0.5), transparent);
         }
 
         .timeline-item {
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
-            padding: 15px 0;
+            transition: all 0.8s ease;
+            padding: 25px 0;
             position: relative;
+            width: 100%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: var(--warm-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--warm-gold), 0 0 30px var(--warm-gold);
+            z-index: 2;
         }
 
         .timeline-item.visible {
@@ -976,18 +1035,6 @@
             font-size: 1.3rem;
             color: var(--warm-gold);
             text-shadow: 0 0 15px rgba(212, 168, 70, 0.3);
-        }
-
-        .timeline-arrow {
-            font-size: 1.5rem;
-            color: rgba(212, 168, 70, 0.4);
-            margin: 5px 0;
-            opacity: 0;
-            transition: all 0.6s ease;
-        }
-
-        .timeline-arrow.visible {
-            opacity: 1;
         }
 
         .future-final {
@@ -1297,119 +1344,38 @@
         }
 
         /* ==================== MOOD THEMES ==================== */
-        body.mood-romantic {
-            --accent-glow: rgba(212, 38, 126, 0.15);
-        }
+        body.mood-romantic { --accent-glow: rgba(212, 38, 126, 0.15); }
+        body.mood-calm { --accent-glow: rgba(196, 166, 232, 0.1); }
+        body.mood-sad { --accent-glow: rgba(100, 100, 180, 0.08); }
+        body.mood-happy { --accent-glow: rgba(240, 208, 96, 0.1); }
 
-        body.mood-calm {
-            --accent-glow: rgba(196, 166, 232, 0.1);
-        }
-
-        body.mood-sad {
-            --accent-glow: rgba(100, 100, 180, 0.08);
-        }
-
-        body.mood-happy {
-            --accent-glow: rgba(240, 208, 96, 0.1);
-        }
-
-      /* ==================== RESPONSIVE (تعديلات الموبايل) ==================== */
+      /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
-            .section {
-                padding: 60px 15px;
-            }
+            .section { padding: 60px 15px; }
 
-            /* تعديلات قسم الذكريات */
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr); /* عرض كارتين جنب بعض */
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
                 padding: 10px 5px;
             }
-            .memory-card {
-                padding: 8px 8px 15px 8px; /* تصغير حواف الكارت للموبايل */
-            }
-            .memory-media {
-                height: 140px; /* تقصير طول الصورة عشان تناسب الشاشة */
-            }
-            .memory-note {
-                font-size: 1rem;
-                margin-top: 10px;
-            }
-            .upload-btn {
-                padding: 12px 25px;
-                font-size: 1.05rem;
-            }
+            .memory-card { padding: 8px 8px 30px 8px; }
+            .memory-media { height: 140px; }
+            .memory-note { font-size: 1rem; margin-top: 10px; }
+            .upload-btn { padding: 12px 25px; font-size: 1.05rem; }
 
-            /* تعديلات قسم الورود الحقيقية */
-            .flower-choices {
-                gap: 12px;
-                margin-top: 20px;
-            }
-            .flower-choice {
-                width: 105px;
-                height: 135px;
-                padding: 10px;
-            }
-            .real-flower-img {
-                width: 65px;
-                height: 65px;
-                margin-bottom: 10px;
-            }
-            .flower-choice-label {
-                font-size: 0.85rem;
-            }
-            .flower-response {
-                margin-top: 25px;
-                padding: 15px;
-            }
-            .flower-response p {
-                font-size: 1.1rem;
-            }
-
-            /* تعديلات عامة */
-            .envelope-container {
-                width: 250px;
-                height: 175px;
-            }
-            .words-grid {
-                gap: 10px;
-            }
-            .word-card {
-                padding: 12px 20px;
-                font-size: 1.1rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .music-btn, .mood-btn {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-                bottom: 15px;
-            }
-            .mood-menu {
-                bottom: 55px;
-            }
+            .envelope-container { width: 250px; height: 175px; }
+            .words-grid { gap: 10px; }
+            .word-card { padding: 12px 20px; font-size: 1.1rem; }
+            .section-title { font-size: 1.8rem; }
+            .music-btn, .mood-btn { padding: 8px 12px; font-size: 0.8rem; bottom: 15px; }
+            .mood-menu { bottom: 55px; }
         }
 
-        /* للشاشات الصغيرة جداً */
         @media (max-width: 380px) {
-            .gallery-grid {
-                grid-template-columns: 1fr; /* عرض كارت واحد كبير لو الشاشة صغيرة جداً */
-            }
-            .memory-media {
-                height: 200px;
-            }
-            .flower-choice {
-                width: 95px;
-                height: 125px;
-            }
-            .real-flower-img {
-                width: 55px;
-                height: 55px;
-            }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .memory-media { height: 200px; }
         }
 
-        /* ==================== REDUCED MOTION ==================== */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -1417,23 +1383,10 @@
             }
         }
 
-        /* ==================== CUSTOM SCROLLBAR ==================== */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--deep-black);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(212, 168, 70, 0.3);
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(212, 168, 70, 0.5);
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--deep-black); }
+        ::-webkit-scrollbar-thumb { background: rgba(212, 168, 70, 0.3); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(212, 168, 70, 0.5); }
 
         .section-divider {
             width: 60px;
@@ -1445,10 +1398,8 @@
 </head>
 <body>
 
-
 <!-- ==================== INTRO SCREEN ==================== -->
 <div id="intro-screen">
-    <!-- خلفية البحيرة والغروب مع طبقة شفافة غامقة عشان الكلام يبان -->
     <div class="intro-bg"></div>
     <canvas id="intro-canvas"></canvas>
     
@@ -1516,7 +1467,6 @@
                         <stop offset="100%" style="stop-color:#d4a846"/>
                     </radialGradient>
                 </defs>
-                <!-- Petals -->
                 <ellipse cx="100" cy="55" rx="25" ry="40" fill="url(#petalGrad1)" opacity="0.9" transform="rotate(0 100 100)">
                     <animateTransform attributeName="transform" type="rotate" values="0 100 100;5 100 100;0 100 100" dur="4s" repeatCount="indefinite"/>
                 </ellipse>
@@ -1541,13 +1491,10 @@
                 <ellipse cx="100" cy="55" rx="25" ry="40" fill="url(#petalGrad1)" opacity="0.85" transform="rotate(315 100 100)">
                     <animateTransform attributeName="transform" type="rotate" values="315 100 100;320 100 100;315 100 100" dur="3.3s" repeatCount="indefinite"/>
                 </ellipse>
-                <!-- Center -->
                 <circle cx="100" cy="100" r="18" fill="url(#centerGrad)">
                     <animate attributeName="r" values="18;20;18" dur="3s" repeatCount="indefinite"/>
                 </circle>
-                <!-- Stem -->
                 <line x1="100" y1="140" x2="100" y2="195" stroke="#4a8c3f" stroke-width="3" stroke-linecap="round"/>
-                <!-- Leaves -->
                 <ellipse cx="85" cy="165" rx="15" ry="6" fill="#5a9c4f" transform="rotate(-30 85 165)"/>
                 <ellipse cx="115" cy="175" rx="15" ry="6" fill="#5a9c4f" transform="rotate(25 115 175)"/>
             </svg>
@@ -1647,15 +1594,10 @@
 
         <div class="timeline" id="timeline">
             <div class="timeline-item"><span class="timeline-text">أول مرة</span></div>
-            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">أول ذكرى</span></div>
-            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">كل لحظة حلوة</span></div>
-            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">كل اللي جاي</span></div>
-            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">إنتِ وأنا</span></div>
-            <div class="timeline-arrow">↓</div>
             <div class="timeline-item"><span class="timeline-text">لسه الحكاية في أولها...</span></div>
         </div>
 
@@ -1742,7 +1684,7 @@
 
 </main>
 
-<!-- ==================== NOTE MODAL (نافذة كتابة الملاحظة) ==================== -->
+<!-- ==================== NOTE MODAL ==================== -->
 <div class="popup-overlay" id="note-overlay" onclick="cancelMemory()"></div>
 <div class="note-modal" id="note-modal">
     <h3 style="color: var(--warm-gold); margin-bottom: 15px; font-family: 'Aref Ruqaa', serif;">اكتبي حكاية الذكرى 📝</h3>
@@ -1753,7 +1695,7 @@
     </div>
 </div>
 
-<!-- ==================== LIGHTBOX (نافذة عرض الصورة/الفيديو/الرسالة) ==================== -->
+<!-- ==================== LIGHTBOX ==================== -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
     <div id="lightbox-media-container"></div>
@@ -1792,7 +1734,6 @@ let particlesArray = [];
 let introAnimationDone = false;
 
 // ==================== WORD MESSAGES ====================
-// ==================== WORD MESSAGES ====================
 const wordMessages = {
     'روضتي': 'اسمك لوحده بيخطف قلبي كل ما بنطقه... \nإنتِ الجنة اللي ربنا رزقني بيها في الدنيا دي 🌸❤️',
     'حبيبتي': 'حبيتك عشان إنتِ الوحيدة اللي قدرت تفهم روحي وتطمنها... 🫂\nولو اتعاد الزمن ألف مرة هفضل أختارك في كل مرة 💖✨',
@@ -1815,7 +1756,7 @@ function initIntro() {
     let flowerProgress = 0;
     let time = 0;
     let centerX = canvas.width / 2;
-    let centerY = canvas.height * 0.45; // رفعنا الوردة شوية عشان ندي مساحة للكلام
+    let centerY = canvas.height * 0.45;
 
     let centerGlow = { brightness: 0 };
 
@@ -1977,7 +1918,7 @@ function initIntro() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         centerX = canvas.width / 2;
-        centerY = canvas.height * 0.45; // عشان يفضل مرفوع وقت التصغير والتكبير
+        centerY = canvas.height * 0.45;
     });
 }
 
@@ -2151,7 +2092,7 @@ function showWordMessage(el) {
     }, 200);
 }
 
-// ==================== DYNAMIC MEMORIES ====================
+// ==================== DYNAMIC MEMORIES (Local Storage حالياً) ====================
 let tempMediaData = null;
 let tempMediaType = null;
 
@@ -2303,7 +2244,7 @@ function openEnvelope() {
 
 أوعدك أفضل جنبك واحبك كل يوم اكتر من اليوم القبله وأحافظ عليكي جوه عيني 
 
-بحبك يا روضتي ❤️`;
+بحبك يا روضتي ❤️️`;
 
         const textEl = document.getElementById('letter-text');
         const expanded = document.getElementById('letter-expanded');
@@ -2390,7 +2331,6 @@ function initStars() {
 // ==================== TIMELINE ====================
 function initTimeline() {
     const items = document.querySelectorAll('.timeline-item');
-    const arrows = document.querySelectorAll('.timeline-arrow');
     const finalMsg = document.getElementById('future-final');
 
     const observer = new IntersectionObserver((entries) => {
@@ -2399,9 +2339,6 @@ function initTimeline() {
                 items.forEach((item, i) => {
                     setTimeout(() => {
                         item.classList.add('visible');
-                        if (arrows[i]) {
-                            setTimeout(() => arrows[i].classList.add('visible'), 300);
-                        }
                     }, i * 500);
                 });
 
